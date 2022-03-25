@@ -42,5 +42,12 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     ctx.fillRect(x-5, y-5, 10, 10);
   }
 
-  
+  canvasClick(event: MouseEvent) {
+    const x = event.offsetX;
+    const y = event.offsetY;
+    this.ws.send(JSON.stringify({
+      type: 'SEND_PIXEL',
+      coordinates: {x, y}
+    }))
+  }
 }
